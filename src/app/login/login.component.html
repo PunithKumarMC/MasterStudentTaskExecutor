@@ -1,0 +1,82 @@
+<div>
+
+    <div class="center">
+    <span
+      ><h1
+        style="
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+            sans-serif;
+          font-size: 40px;
+        "
+      >
+        Login to your account !
+      </h1></span></div>
+    <br />
+
+    <br /><br /><br />
+    <div class="center">
+    <form [formGroup]="registerform">
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+          formControlName="email"
+        
+        />
+        <div *ngIf="registerform.controls['email'].hasError('pattern')">
+          invalid format
+        </div>
+
+        <small id="emailHelp" class="form-text text-muted"
+          >We'll never share your email with anyone else.</small
+        ><br>
+      </div><br><br>
+      <div class="form-group" >
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Password"
+          formControlName="password"
+          
+        />
+      </div>
+      <div *ngIf="registerform.controls['password'].hasError('minlength')">
+        password min length Required i.e 6
+      </div>
+      <div *ngIf="registerform.controls['password'].hasError('maxlength')">
+        password max length Required i.e 12
+      </div>
+      <br />
+      <select [(ngModel)]="selectedSymbol"  [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let symbol of roles" [value]="symbol">{{symbol}}</option>
+      </select>
+      <button  class="button-secondary"
+        type="submit"
+        style="margin-left: 100px;"
+     
+        (click)="onLogin()"
+     
+        
+        [disabled]="
+          registerform.value.email === '' ||
+          registerform.value.password === '' ||
+          registerform.controls['password'].hasError('minlength') ||
+          registerform.controls['password'].hasError('maxlength')
+        "
+      >
+        Login
+      </button>
+      <button routerLink="/home" style="margin-left: 50px;"  class="button-secondary">Home</button>
+      <div style="font-weight:bolder;color:rgb(182, 46, 46)">{{this.error}}</div>
+    </form>
+    
+    <br />
+    
+  </div>
+ 
+</div>
+

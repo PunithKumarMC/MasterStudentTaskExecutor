@@ -1,0 +1,24 @@
+<div class="center"><h1>Hi Student, Clilck below button to see the activity log of masters!!!! </h1></div>
+
+<button (click)="getlogs()" class="button-secondary" style="margin-left: 600px;margin-bottom: 50px;">Show master log</button>
+<button (click)="logout()" class="button-secondary" style="margin-left:50px ;">LogOut</button>
+<table>
+    <thead>
+      <tr>
+        <th>Num 1</th>
+        <th>Symbol</th>
+        <th>Num 2</th>
+        <th>Email</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data; let x=index">
+        <td>{{ item.num1 }}</td>
+        <td>{{ item.symbol }}</td>
+        <td>{{ item.num2 }}</td>
+        <td>{{ item.email ? item.email : '-' }}</td>
+        <td>{{ item.result }}</td>
+      </tr>
+    </tbody>
+  </table>

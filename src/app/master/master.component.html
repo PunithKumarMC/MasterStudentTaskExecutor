@@ -1,0 +1,24 @@
+<button (click)="logout()"  class="button-secondary" style="margin-left: 1200px;">Logout</button>
+<h1 class="center">Hi Students fill below boxes to get result!! </h1>
+
+<form [formGroup]="masterform" class="center">
+    <input type="number" class="form-control" placeholder="Enter number from 0 - 9"
+    formControlName="num1" [(ngModel)]="num3" >
+    <div *ngIf="masterform.controls['num1'].hasError('pattern')">
+        invalid format
+      </div>
+
+      <select [(ngModel)]="selectedSymbol"  [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let symbol of symbols" [value]="symbol">{{symbol}}</option>
+      </select>
+
+      <input type="number" class="form-control" placeholder="Enter number from 0 - 9"
+      formControlName="num2" [(ngModel)]="num4">
+      <div *ngIf="masterform.controls['num2'].hasError('pattern')">
+        invalid format
+      </div>
+      <button (click)="result = calculateResult()" (click)="activitylog()"  class="button-secondary" style="margin-left: 50px;">Calculate</button>
+      
+</form>
+<h1 class="center" style="margin-top: 250px;">Result: {{result}}</h1>
+<img src="../../assets/images/2.jpg" alt="" style="height: 500px;margin-top: -300px;">

@@ -1,0 +1,79 @@
+<div >
+   <div class="center">
+    <h1
+      style="
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+          sans-serif;
+        font-size: 40px;
+      "
+    >
+      Sign Up !
+    </h1></div>
+<div class="center">
+<form [formGroup]="registerform">
+    <div class="form-group" >
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+        formControlName="email"
+        style="
+          border-style: solid;
+          border-color: #0fb081;
+          border-width: 1px;
+          height: 50px;
+        "
+      />
+      <div *ngIf="registerform.controls['email'].hasError('pattern')">
+        invalid format
+      </div><br>
+
+      <small id="emailHelp" class="form-text text-muted"
+        >We'll never share your email with anyone else.</small
+      ><br>
+    </div>
+    <div class="form-group" >
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Password"
+        formControlName="password"
+        style="
+          border-style: solid;
+          border-color: #0fb081;
+          border-width: 1px;
+          
+        "
+      />
+    </div>
+    <div *ngIf="registerform.controls['password'].hasError('minlength')">
+      password min length Required i.e 6
+    </div>
+    <div *ngIf="registerform.controls['password'].hasError('maxlength')">
+      password max length Required i.e 12
+    </div>
+    <br />
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="registerNow()"
+      [disabled]="
+        registerform.value.email === '' ||
+        registerform.value.password === '' ||
+        registerform.controls['password'].hasError('minlength') ||
+        registerform.controls['password'].hasError('maxlength')
+      "
+      class="button-secondary"
+    >
+      register
+    </button>
+
+    <button routerLink="/home" style="margin-left: 50px;"class="button-secondary">Home</button>
+  
+  </form>
+</div>
+</div>
