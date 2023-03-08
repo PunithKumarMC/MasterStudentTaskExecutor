@@ -1,0 +1,17 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: user-auth-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/masterstudentdb?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    username: root
+    password: Punith@9535
+    driver: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
